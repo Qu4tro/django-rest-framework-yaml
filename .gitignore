@@ -23,3 +23,6 @@ local/
 !.pre-commit-config.yaml
 
 pip-wheel-metadata
+
+poetry.lock
+coverage.lcov

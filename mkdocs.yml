@@ -2,3 +2,24 @@ site_name: djangorestframework-yaml
 site_description: YAML support for Django REST Framework
 repo_url: https://github.com/jpadilla/django-rest-framework-yaml
 site_dir: html
+theme:
+  name: material
+  palette:
+  - media: "(prefers-color-scheme)"         # Palette toggle for automatic mode
+    toggle:
+      icon: material/brightness-auto
+      name: Switch to light mode
+
+
+  - media: "(prefers-color-scheme: light)"  # Palette toggle for light mode
+    scheme: default
+    toggle:
+      icon: material/brightness-7
+      name: Switch to dark mode
+
+
+  - media: "(prefers-color-scheme: dark)"  # Palette toggle for dark mode
+    scheme: slate
+    toggle:
+      icon: material/brightness-4
+      name: Switch to system preference

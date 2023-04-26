@@ -1,18 +1,15 @@
-"""
-Provides YAML rendering support.
-"""
-from __future__ import unicode_literals
+"""Provides YAML rendering support."""
 
+from typing import Any, Mapping, Optional
+
+import yaml
 from rest_framework.renderers import BaseRenderer
 
-from .compat import yaml
 from .encoders import SafeDumper
 
 
 class YAMLRenderer(BaseRenderer):
-    """
-    Renderer which serializes to YAML.
-    """
+    """Renderer which serializes to YAML."""
 
     media_type = "application/yaml"
     format = "yaml"
@@ -20,18 +17,21 @@ class YAMLRenderer(BaseRenderer):
     charset = "utf-8"
     ensure_ascii = False
     default_flow_style = False
+    sort_keys = False
 
-    def render(self, data, accepted_media_type=None, renderer_context=None):
-        """
-        Renders `data` into serialized YAML.
-        """
-        assert yaml, "YAMLRenderer requires pyyaml to be installed"
-
+    def render(
+        self,
+        data: Any,
+        _accepted_media_type: Optional[str] = None,
+        _renderer_context: Optional[Mapping[str, Any]] = None,
+    ) -> Any:
+        """Render `data` into serialized YAML."""
         if data is None:
             return ""
 
         return yaml.dump(
             data,
+            sort_keys=self.sort_keys,
             stream=None,
             encoding=self.charset,
             Dumper=self.encoder,
