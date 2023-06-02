@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "drf-yaml"
-version = "3.0.0"
+version = "3.0.1"
 description = "YAML support for Django REST Framework"
 authors = [
     "José Padilla <hello@jpadilla.com>",

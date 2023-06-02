@@ -15,7 +15,7 @@ class FlowStyleDictField(fields.DictField):
 
     def to_representation(self, value: Any) -> dict[Any, Any]:
         """Render a flow style mapping."""
-        return styles.flow_style_mapping(super().to_representation(value))
+        return styles.FlowStyleMapping(super().to_representation(value))
 
 
 class FlowStyleListField(fields.ListField):
@@ -23,7 +23,7 @@ class FlowStyleListField(fields.ListField):
 
     def to_representation(self, value: Any) -> list[Any]:
         """Render a flow style sequence."""
-        return styles.flow_style_sequence(super().to_representation(value))
+        return styles.FlowStyleSequence(super().to_representation(value))
 
 
 class SingleQuotedCharField(fields.CharField):
@@ -31,7 +31,7 @@ class SingleQuotedCharField(fields.CharField):
 
     def to_representation(self, value: Any) -> str:
         """Render a single quoted string."""
-        return styles.single_quoted_str(super().to_representation(value))
+        return styles.SingleQuotedStr(super().to_representation(value))
 
 
 class DoubleQuotedCharField(fields.CharField):
@@ -39,7 +39,7 @@ class DoubleQuotedCharField(fields.CharField):
 
     def to_representation(self, value: Any) -> str:
         """Render a double quoted string."""
-        return styles.double_quoted_str(super().to_representation(value))
+        return styles.DoubleQuotedStr(super().to_representation(value))
 
 
 class FoldedCharField(fields.CharField):
@@ -47,7 +47,7 @@ class FoldedCharField(fields.CharField):
 
     def to_representation(self, value: Any) -> str:
         """Render a folded string."""
-        return styles.folded_str(super().to_representation(value))
+        return styles.FoldedStr(super().to_representation(value))
 
 
 class LiteralCharField(fields.CharField):
@@ -55,4 +55,4 @@ class LiteralCharField(fields.CharField):
 
     def to_representation(self, value: Any) -> str:
         """Render a literal string."""
-        return styles.literal_str(super().to_representation(value))
+        return styles.LiteralStr(super().to_representation(value))
